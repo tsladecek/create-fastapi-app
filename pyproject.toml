@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "cfa"
+version = "0.1.0"
+authors = [
+    { name = "Tomas Sladecek" }
+]
+description = "Wrapper for initializing FastAPI projects - Create Fastapi App"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "typer >= 0.6, < 1",
+    "colorama >=0.4, < 1",
+    "rich >= 12.6, < 13",
+    "shellingham >= 1.5, < 2"
+]
+[project.urls]
+"Homepage" = "https://github.com/tsladecek/create-fastapi-app"
+[project.scripts]
+cfa = "cfa:app"
