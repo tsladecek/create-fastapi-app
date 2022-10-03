@@ -3,6 +3,7 @@ fastapi-app/.idea
 *.db
 *pycache*
 *.pyc
-src/cfa/data/
+src/cfa/data/*
+!src/cfa/data/README.md
 dist/
 *.egg-info
