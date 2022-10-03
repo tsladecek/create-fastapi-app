@@ -1,0 +1,4 @@
+site_name: Create FastAPI App
+
+theme:
+  name: material
