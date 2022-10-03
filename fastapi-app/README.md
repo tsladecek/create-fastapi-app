@@ -12,6 +12,7 @@ pip install --user pipenv
 1. Install app requirements
     
     ```shell
+    pipenv shell
     pipenv sync --dev
     ```
    
@@ -55,6 +56,6 @@ pipenv sync
 
 ### Environment
 
-Application is configurable with a `.env` file. Configurations from this file overwrite configurations in the `app/core/config.py` file.
+Application is configurable with a `.env` file. Configurations from this file overwrite configurations in the `app/core/config.py`.
 
-Please make sure to exclude this file from git (by adding it to the .gitignore).
+Please make sure to exclude the `.env` file from git (by adding it to the .gitignore).
