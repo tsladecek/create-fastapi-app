@@ -1,4 +1,40 @@
 site_name: Create FastAPI App
+dev_addr: '127.0.0.1:8005'
 
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.top  # back to top button
+    - search.highlight
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - toc:
+      permalink: True
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
