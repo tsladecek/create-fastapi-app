@@ -4,5 +4,8 @@ src/cfa/fastapi-app/.idea
 *pycache*
 *.pyc
 src/cfa/data/*
+src/cfa/fastapi-app/app/models/example.py
+src/cfa/fastapi-app/app/schemas/example.py
+src/cfa/fastapi-app/app/crud/crud_example.py
 dist/
 *.egg-info
