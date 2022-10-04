@@ -20,7 +20,7 @@ def get_db() -> Generator:
         db.close()
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl='auth/token')
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl=f'{settings.API_VERSION}/auth/token')
 
 
 def get_user(db: Session = Depends(get_db),

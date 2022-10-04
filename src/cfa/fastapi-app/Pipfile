@@ -10,6 +10,7 @@ python-multipart = "*"
 pydantic = "*"
 python-jose = {extras = ["cryptography"], version = "*"}
 passlib = {extras = ["bcrypt"], version = "*"}
+httpx = "*"
 
 [dev-packages]
 autopep8 = "*"

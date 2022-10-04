@@ -30,9 +30,6 @@ jobs:
         VERSION=${{ steps.previoustag.outputs.tag }}
         echo $VERSION
         sed -i "s/0.0.1/$VERSION/g" pyproject.toml
-    - name: create archive
-      run: |
-        tar -C fastapi-app/ -cf src/cfa/data/cfa.tar .
     - name: Build package
       run: python -m build
     - name: Publish package

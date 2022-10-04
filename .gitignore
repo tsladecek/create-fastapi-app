@@ -1,9 +1,8 @@
 .idea
-fastapi-app/.idea
+src/cfa/fastapi-app/.idea
 *.db
 *pycache*
 *.pyc
 src/cfa/data/*
-!src/cfa/data/README.md
 dist/
 *.egg-info
