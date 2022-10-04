@@ -19,8 +19,12 @@ pip install create-fastapi-app
 To create a new applications at a directory `~/my_fastapi_dir`, run:
 
 ```shell
-cfa ~/my_fastapi_dir
+cfa create ~/my_fastapi_dir
 ```
+
+---
+
+To automate generating schemas and crud for a new model, see [models](models)
 
 #### Options
 
@@ -32,7 +36,7 @@ You can choose from three auth setups:
 - self - self-managed auth
 
     ```shell
-    cfa ~/my_fastapi_dir --auth=self
+    cfa create ~/my_fastapi_dir --auth=self
     ```
 
     Will create a `users` table and auth mechanisms for authorizing requests
@@ -40,7 +44,7 @@ You can choose from three auth setups:
 - backend - auth managed by other backend
 
     ```shell
-    cfa ~/my_fastapi_dir --auth=backend
+    cfa create ~/my_fastapi_dir --auth=backend
     ```
 
     Will create a logic for authorizing requests via external backend API. Remember to set the `BACKEND_URL` env var, as well as the `GET_USER_BY_TOKEN_ENDPOINT` env variable.

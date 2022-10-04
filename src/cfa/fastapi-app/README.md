@@ -59,3 +59,19 @@ pipenv sync
 Application is configurable with a `.env` file. Configurations from this file overwrite configurations in the `app/core/config.py`.
 
 Please make sure to exclude the `.env` file from git (by adding it to the .gitignore).
+
+### Adding new model
+
+When you declare a new SQLAlchemy model in the `app/models` directory, simply run:
+
+```shell
+cfa add-model <model_name> <path_to_model_file>
+```
+
+This will generate schemas in the `app/schemas` directory, update the `app/schemas/__init__.py` file and create a crud class in `app/crud`.
+
+Make sure install the `create-fastapi-app` in your current environment. To do so, run:
+
+```shell
+pipenv install --dev create-fastapi-app
+```
