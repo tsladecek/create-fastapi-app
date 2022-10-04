@@ -5,7 +5,7 @@ import subprocess
 import typer
 from rich import print
 
-from src.cfa.apply_template_option import apply_template_option
+from .apply_template_option import apply_template_option
 
 app = typer.Typer()
 
