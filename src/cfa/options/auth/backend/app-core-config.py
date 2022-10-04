@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     SQLALCHEMY_DATABASE_URI: str = 'sqlite:///db.db'
 
     BACKEND_URL: str = ''
+    GET_USER_BY_TOKEN_ENDPOINT: str = ''
 
     class Config:
         env_file = '.env'

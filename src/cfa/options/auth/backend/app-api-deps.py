@@ -20,7 +20,7 @@ def get_db() -> Generator:
 
 async def get_user_by_token_from_backend(token: str):
     async with httpx.AsyncClient() as client:
-        r = await client.get(f'{settings.BACKEND_URL}/get_user_by_token/{token}')
+        r = await client.get(f'{settings.BACKEND_URL}/{settings.GET_USER_BY_TOKEN_ENDPOINT}/{token}')
         if r.status_code != 200:
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                                 detail='Authentication failed. Invalid token.')
