@@ -21,6 +21,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Models: models.md
 
 repo_url: https://github.com/tsladecek/create-fastapi-app
 
