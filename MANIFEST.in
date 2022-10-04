@@ -1,0 +1,6 @@
+include src/cfa/fastapi-app/env_example
+include src/cfa/fastapi-app/*.sh
+include src/cfa/fastapi-app/*.md
+include src/cfa/fastapi-app/Pipfile*
+include src/cfa/fastapi-app/Dockerfile*
+include src/cfa/fastapi-app/docker-compose*

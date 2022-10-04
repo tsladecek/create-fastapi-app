@@ -31,6 +31,8 @@ def cfa(
     Initialize a FastAPI app at specified path
     """
     print(':flexed_biceps: Creating Project')
+    print(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
+    print(subprocess.run(['ls', '-a', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app')]))
     subprocess.run(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
 
     if auth in [AuthOptions.self, AuthOptions.backend]:
