@@ -23,20 +23,22 @@ def cfa(
                                          help="Auth options. Allowed values are: "
                                               "none: for no authentication, "
                                               "self: for self managed authentication and user management, "
-                                              "backend: for auth managed by other API")
+                                              "backend: for auth managed by other API"),
+        version: bool = False
 ):
     """
     Create FastAPI app
 
     Initialize a FastAPI app at specified path
     """
-    print(':flexed_biceps: Creating Project')
-    print(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
-    print(subprocess.run(['ls', '-a', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app')]))
-    subprocess.run(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
+    if version:
+        print('VERSION')
+    else:
+        print(':flexed_biceps: Creating Project')
+        subprocess.run(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
 
-    if auth in [AuthOptions.self, AuthOptions.backend]:
-        print(f':locked_with_key: Setting up Auth to "{auth.name}"')
-        apply_template_option('auth', auth.name, path)
+        if auth in [AuthOptions.self, AuthOptions.backend]:
+            print(f':locked_with_key: Setting up Auth to "{auth.name}"')
+            apply_template_option('auth', auth.name, path)
 
-    print(f':oncoming_fist: The project is setup at: {path}')
+        print(f':oncoming_fist: The project is setup at: {path}')
