@@ -10,7 +10,7 @@ app = FastAPI(
     version=settings.VERSION
 )
 
-app.include_router(router)
+app.include_router(router, prefix=settings.API_VERSION)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=settings.PORT, reload=True)

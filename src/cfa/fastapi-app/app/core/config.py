@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     APP_TITLE: str = 'FastAPI Backend'
     DESCRIPTION: str = 'FastAPI based Backend API communicating with SQL DB via SQLAlchemy'
     VERSION: str = '0.1.0'
+    API_VERSION: str = '/api/v1'
 
     SQLALCHEMY_DATABASE_URI: str = 'sqlite:///db.db'
 
