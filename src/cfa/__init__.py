@@ -5,6 +5,8 @@ import subprocess
 import typer
 from rich import print
 
+from src.cfa.apply_template_option import apply_template_option
+
 app = typer.Typer()
 
 
@@ -17,11 +19,11 @@ class AuthOptions(enum.Enum):
 @app.command()
 def cfa(
         path: str = typer.Argument(..., help="Directory where the FastAPI app will be initialized"),
-        auth: AuthOptions = typer.Argument('self',
-                                           help="Auth options. Allowed values are: "
-                                                "none: for no authentication, "
-                                                "self: for self managed authentication and user management, "
-                                                "backend: for auth managed by other API")
+        auth: AuthOptions = typer.Option('self',
+                                         help="Auth options. Allowed values are: "
+                                              "none: for no authentication, "
+                                              "self: for self managed authentication and user management, "
+                                              "backend: for auth managed by other API")
 ):
     """
     Create FastAPI app
@@ -31,11 +33,12 @@ def cfa(
     print(':flexed_biceps: Creating Project')
     subprocess.run(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
 
-    print(':locked_with_key: Setting up Auth')
+    if auth in [AuthOptions.self, AuthOptions.backend]:
+        print(f':locked_with_key: Setting up Auth to "{auth.name}"')
 
-    if auth == 'self':
-        pass
-    elif auth == 'backend':
+    if auth == AuthOptions.self:
+        apply_template_option('auth', AuthOptions.self.name, path)
+    elif auth == AuthOptions.backend:
         pass
 
     print(f':oncoming_fist: The project is setup at: {path}')
