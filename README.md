@@ -1,4 +1,7 @@
+<img src="docs/misc/logo-no-background.svg" width="100" alt="" style="float: right;">
+
 # Create FastAPI App (cfa)
+
 
 Create and manage FastAPI applications
 

@@ -1,3 +1,6 @@
+
+<img src="misc/logo-no-background.svg" width="100" alt="" style="float: right;">
+
 # Create FastAPI App
 
 Create and manage FastAPI applications
