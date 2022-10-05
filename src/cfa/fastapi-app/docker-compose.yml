@@ -1,0 +1,33 @@
+# Make sure to set following variables in your .env file
+#  prior to running the `docker-compose up` command
+# MARIADB_USERNAME
+# MARIADB_PASSWORD
+# DB_NAME
+######################################
+# For data persistence uncomment the volume section and
+# edit the path (should be absolute)
+version: "3"
+services:
+  db:
+    image: docker.io/library/mariadb:10.3
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    environment:
+      - MARIADB_ROOT_PASSWORD=$MARIADB_PASSWORD
+      - MARIADB_DATABASE=$DB_NAME
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+#    volumes:
+#      - /path/where/db/data/will/be/saved:/var/lib/mysql
+  api:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - SQLALCHEMY_DATABASE_URI=mysql+pymysql://$MARIADB_USERNAME:$MARIADB_PASSWORD@db:3306/$DB_NAME
+    depends_on:
+      - db
