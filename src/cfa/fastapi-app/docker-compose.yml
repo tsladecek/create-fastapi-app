@@ -3,6 +3,7 @@
 # MARIADB_USERNAME
 # MARIADB_PASSWORD
 # DB_NAME
+# DB_DATA
 ######################################
 # For data persistence uncomment the volume section and
 # edit the path (should be absolute)
@@ -18,8 +19,8 @@ services:
       - MARIADB_ROOT_PASSWORD=$MARIADB_PASSWORD
       - MARIADB_DATABASE=$DB_NAME
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
-#    volumes:
-#      - /path/where/db/data/will/be/saved:/var/lib/mysql
+    volumes:
+      - $DB_DATA:/var/lib/mysql
   api:
     build:
       context: .

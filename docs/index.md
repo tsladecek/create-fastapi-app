@@ -19,34 +19,27 @@ pip install create-fastapi-app
 To create a new applications at a directory `~/my_fastapi_dir`, run:
 
 ```shell
-cfa create ~/my_fastapi_dir
+cfa create ~/my_fastapi_dir --auth=[none/self/backend]
+cd ~/my_fastapi_dir
 ```
 
----
+Then install the requirements (expects that you installed [pipenv](https://pipenv.pypa.io/en/latest/) on your system):
 
-To automate generating schemas and crud for a new model, see [models](models)
+```shell
+pipenv shell
+pipenv sync --dev
+```
 
-#### Options
+Initialize the database:
 
-##### Auth
+```shell
+sh init_db.sh
+```
 
-You can choose from three auth setups:
+Run the application:
 
-- none - no auth (default)
-- self - self-managed auth
+```shell
+python main.py
+```
 
-    ```shell
-    cfa create ~/my_fastapi_dir --auth=self
-    ```
-
-    Will create a `users` table and auth mechanisms for authorizing requests
-
-- backend - auth managed by other backend
-
-    ```shell
-    cfa create ~/my_fastapi_dir --auth=backend
-    ```
-
-    Will create a logic for authorizing requests via external backend API. Remember to set the `BACKEND_URL` env var, as well as the `GET_USER_BY_TOKEN_ENDPOINT` env variable.
-
-    When trying to authorize, by default the app will call an endpoint at `http://{BACKEND_URL}/{GET_USER_BY_TOKEN_ENDPOINT}/{token}`. Make sure to have this endpoint and it returns a user object (with name, surname, email, etc)
+Done! You can view the interactivate documentation at [localhost:8000/docs](http://localhost:8000/docs) :sunglasses:

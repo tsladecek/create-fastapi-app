@@ -21,7 +21,13 @@ theme:
 
 nav:
   - Home: index.md
-  - Models: models.md
+  - Installation: installation.md
+  - Tutorial:
+    - Introduction: tutorial/introduction.md
+    - Create app: tutorial/create_app.md
+    - App Structure: tutorial/app_structure.md
+    - Add model: tutorial/add_model.md
+    - Deployment: tutorial/deployment.md
 
 repo_url: https://github.com/tsladecek/create-fastapi-app
 

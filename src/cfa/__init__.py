@@ -18,8 +18,8 @@ class AuthOptions(enum.Enum):
 
 @app.command()
 def version():
-    """Just a placeholder overwritten in CI"""
-    print('VERSION')
+    """Application version"""
+    print('VERSION') # just a placeholder replaced in CI
 
 
 @app.command()
@@ -55,6 +55,9 @@ def add_model(
         model_name: str = typer.Argument(..., help='Model name - Case sensitive'),
         model_filepath: str = typer.Argument(..., help='Path to the model file. Relative or absolute'),
 ):
+    """
+    Create schemas and crud for a SQLAlchemy model
+    """
     path = pathlib.PurePath(model_filepath).parts
 
     # get app dir for creating schemas and crud
@@ -107,6 +110,7 @@ def add_model(
 
     # Create schemas file
     schemas = [
+        'from pydantic import BaseModel\n\n'
         f'class {model_name}Base(BaseModel):',
         '\n'.join(f'    {col}: {dt}' if type != '' else f'    {col}' for col, dt in cols),
         '\n\n'
