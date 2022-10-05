@@ -21,3 +21,6 @@ venv/
 # logs
 logs/*
 !logs/README.md
+
+# pytest
+.pytest_cache
