@@ -29,7 +29,8 @@ def create(
                                          help="Auth options. Allowed values are: "
                                               "none: for no authentication, "
                                               "self: for self managed authentication and user management, "
-                                              "backend: for auth managed by other API")
+                                              "backend: for auth managed by other API"),
+        git_init: bool = typer.Option(True, help='Initialize git repository')
 ):
     """
     Create FastAPI app
@@ -43,6 +44,9 @@ def create(
         print(f':locked_with_key: Setting up Auth to "{auth.name}"')
         apply_template_option('auth', auth.name, path)
 
+    if git_init:
+        print(':wrench: Initializing git repo')
+        subprocess.run(['git', 'init', path])
     print(f':oncoming_fist: The project is setup at: {path}')
 
 
