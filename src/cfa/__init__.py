@@ -1,5 +1,6 @@
 import enum
 import pathlib
+import shutil
 import subprocess
 
 import typer
@@ -19,7 +20,7 @@ class AuthOptions(enum.Enum):
 @app.command()
 def version():
     """Application version"""
-    print('VERSION') # just a placeholder replaced in CI
+    print('VERSION')  # just a placeholder replaced in CI
 
 
 @app.command()
@@ -38,16 +39,21 @@ def create(
     Initialize a FastAPI app at specified path
     """
     print(':flexed_biceps: Creating Project')
-    subprocess.run(['cp', '-r', pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app'), path])
 
-    if auth in [AuthOptions.self, AuthOptions.backend]:
-        print(f':locked_with_key: Setting up Auth to "{auth.name}"')
-        apply_template_option('auth', auth.name, path)
+    try:
+        shutil.copytree(pathlib.PurePath(pathlib.Path(__file__).resolve().parent, 'fastapi-app/.'), path)
+    except FileExistsError:
+        print(':disappointed: [bold red]Error![/bold red] Directory already exists. '
+              'Please remove it or pick a different directory name')
+    else:
+        if auth in [AuthOptions.self, AuthOptions.backend]:
+            print(f':locked_with_key: Setting up Auth to "{auth.name}"')
+            apply_template_option('auth', auth.name, path)
 
-    if git_init:
-        print(':wrench: Initializing git repo')
-        subprocess.run(['git', 'init', path])
-    print(f':oncoming_fist: The project is setup at: {path}')
+        if git_init:
+            print(':wrench: Initializing git repo')
+            subprocess.run(['git', 'init', '--quiet', path])
+        print(f':oncoming_fist: [bold green]Success![/bold green] The project is setup at: {path}')
 
 
 @app.command()
