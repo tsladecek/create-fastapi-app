@@ -19,8 +19,8 @@ services:
       - MARIADB_ROOT_PASSWORD=$MARIADB_PASSWORD
       - MARIADB_DATABASE=$DB_NAME
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
-    volumes:
-      - $DB_DATA:/var/lib/mysql
+    # volumes:
+    #   - $DB_DATA:/var/lib/mysql
   api:
     build:
       context: .
